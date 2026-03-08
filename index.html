@@ -1,1 +1,1051 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>8 Марта — Анель Куанышева — Лучшей подруге</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink: rgba(12,14,16,.92);
+      --ink2: rgba(12,14,16,.74);
+
+      --accent:#d7a8b7;
+      --accent2:#bf8fa0;
+
+      --cardTop: rgba(255,255,255,.86);
+      --cardBot: rgba(255,255,255,.64);
+      --border: rgba(255,255,255,.72);
+
+      --shadow: 0 18px 48px rgba(0,0,0,.10);
+      --shadow2: 0 14px 30px rgba(215,168,183,.24);
+
+      --maxw: 760px;
+      --radius: 28px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      font-family: "Cormorant Garamond", serif;
+      color:var(--ink);
+      background:#fff;
+      overflow-x:hidden;
+    }
+
+    .bg{
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(1000px 780px at 50% 0%, rgba(215,168,183,.16), rgba(255,255,255,0) 60%),
+        radial-gradient(900px 700px at 50% 110%, rgba(191,143,160,.12), rgba(255,255,255,0) 58%),
+        linear-gradient(to bottom, #fffdfd, #ffffff);
+      z-index:-3;
+    }
+
+    .veil{
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(1200px 900px at 50% 18%, rgba(255,255,255,.55), rgba(255,255,255,.12)),
+        linear-gradient(to bottom, rgba(215,168,183,.08), rgba(255,255,255,.02));
+      z-index:-2;
+      pointer-events:none;
+    }
+
+    .wrap{
+      width:min(var(--maxw),92vw);
+      margin:0 auto;
+      padding: 22px 0 110px;
+    }
+
+    section{
+      position:relative;
+      padding: 18px 10px;
+      margin: 14px auto;
+      text-align:center;
+    }
+
+    .card{
+      position:relative;
+      background: linear-gradient(180deg, var(--cardTop), var(--cardBot));
+      border-radius: var(--radius);
+      padding: 28px 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+      z-index:1;
+      opacity:0;
+      transform: translateY(16px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .card.revealed{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-40% -30%;
+      background: radial-gradient(circle at 30% 20%, rgba(215,168,183,.18), rgba(255,255,255,0) 60%);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .script{
+      font-family:"Great Vibes",cursive;
+      color:var(--accent2);
+      text-shadow: 0 10px 28px rgba(191,143,160,.18);
+    }
+
+    .caps{
+      font-family: "Cinzel", serif;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color: rgba(191,143,160,.96);
+      font-size:15px;
+      margin:0;
+    }
+
+    .hero-title{
+      font-size: clamp(44px, 8vw, 62px);
+      margin: 0;
+      line-height: 1.05;
+    }
+
+    .h-script{
+      font-size: clamp(42px, 7.8vw, 56px);
+      margin: 0 0 10px;
+      line-height: 1.08;
+    }
+
+    .divider{
+      height:1px;
+      width:min(460px,84%);
+      margin:18px auto;
+      background: linear-gradient(to right, transparent, rgba(191,143,160,.62), transparent);
+    }
+
+    .p{
+      font-size: 23px;
+      line-height: 1.96;
+      color: var(--ink);
+      margin: 12px 0 0;
+    }
+
+    .small{
+      font-size: 17px;
+      line-height: 1.82;
+      color: var(--ink2);
+      margin: 10px 0 0;
+    }
+
+    .hero{
+      display:grid;
+      gap: 12px;
+      place-items:center;
+    }
+
+    .top-element{
+      width:min(240px,72vw);
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 14px 24px rgba(0,0,0,.08));
+      animation: floatEl 4.8s ease-in-out infinite;
+    }
+
+    @keyframes floatEl{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
+    }
+
+    .hero-img{
+      width: min(300px, 78vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow:hidden;
+      box-shadow: 0 18px 48px rgba(0,0,0,.12);
+      border: 2px solid rgba(255,255,255,.74);
+      background: rgba(255,255,255,.18);
+      display:block;
+      position:relative;
+    }
+
+    .hero-img img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display:block;
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top: 10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(215,168,183,.94), rgba(191,143,160,.94));
+      color:#fff !important;
+      text-decoration:none !important;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 13px;
+      font-family: "Cinzel", serif;
+      box-shadow: var(--shadow2);
+      border: 1px solid rgba(255,255,255,.52);
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    .btn:hover{ filter: brightness(1.06); }
+    .btn:active{ transform: scale(.985); }
+
+    .btn.secondary{
+      background: linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.42));
+      color: rgba(12,14,16,.86) !important;
+      border: 1px solid rgba(215,168,183,.28);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+    }
+
+    .chips, .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-top: 14px;
+    }
+
+    .chip, .tag{
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(215,168,183,.24);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.72);
+      font-family:"Cinzel", serif;
+    }
+
+    .gallery{
+      margin-top: 14px;
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.40);
+      background: rgba(255,255,255,.14);
+      box-shadow: 0 16px 40px rgba(0,0,0,.08);
+    }
+
+    .g-stage{
+      position:relative;
+      aspect-ratio: 4 / 5;
+      width:100%;
+      overflow:hidden;
+      background: rgba(255,255,255,.10);
+    }
+
+    .g-stage img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      opacity:0;
+      transition: opacity .35s ease;
+    }
+
+    .g-stage img.active{ opacity:1; }
+
+    .g-controls{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      padding: 12px;
+      align-items:center;
+      background: rgba(255,255,255,.10);
+      border-top: 1px solid rgba(255,255,255,.32);
+    }
+
+    .g-controls button{
+      border:none;
+      border-radius:999px;
+      padding: 12px 18px;
+      cursor:pointer;
+      background: linear-gradient(135deg, rgba(215,168,183,.94), rgba(191,143,160,.94));
+      color:#fff;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size: 12px;
+      font-family:"Cinzel", serif;
+      box-shadow: 0 10px 22px rgba(215,168,183,.20);
+    }
+
+    .dots{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      flex:1;
+      align-items:center;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.72);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .dot.on{
+      background: rgba(191,143,160,.94);
+      transform: scale(1.12);
+    }
+
+    .flow{
+      text-align:left;
+      margin-top: 10px;
+    }
+
+    .flow p{ margin: 12px 0 0; }
+
+    .grid{
+      display:grid;
+      gap: 14px;
+      margin-top: 16px;
+      text-align:left;
+    }
+
+    .mini{
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(215,168,183,.18);
+      border-radius: 18px;
+      padding: 14px 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .mini .t{
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.70);
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-family:"Cinzel", serif;
+    }
+
+    .mini .v{
+      font-size: 20px;
+      line-height: 1.86;
+      color: rgba(12,14,16,.84);
+    }
+
+    .feature-img{
+      width:100%;
+      max-width:420px;
+      border-radius:22px;
+      display:block;
+      margin: 12px auto 18px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.10);
+      border: 1px solid rgba(255,255,255,.7);
+    }
+
+    .countdown{ margin-top: 18px; text-align:center; }
+
+    .count-title{
+      text-align:center;
+      font-size: 13px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+      color: rgba(12,14,16,.68);
+      font-family:"Cinzel", serif;
+    }
+
+    .digits{
+      display:flex;
+      justify-content:center;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    .unit{ min-width: 92px; text-align:center; }
+
+    .flip{
+      background: linear-gradient(135deg, rgba(215,168,183,.94), rgba(191,143,160,.94));
+      color:#fff;
+      border-radius: 14px;
+      padding: 12px 10px;
+      font-size: 34px;
+      line-height: 1;
+      box-shadow: 0 14px 26px rgba(215,168,183,.18);
+      font-variant-numeric: tabular-nums;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+
+    .lab{
+      margin-top: 7px;
+      font-size: 11px;
+      letter-spacing:.16em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.62);
+      font-family:"Cinzel", serif;
+    }
+
+    .sign{
+      margin-top: 14px;
+      font-size: clamp(30px, 7vw, 46px);
+    }
+
+    .footer-sign{
+      margin-top: 10px;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(12,14,16,.62);
+      line-height: 1.7;
+      font-family:"Cinzel", serif;
+    }
+
+    .toTop{
+      position:fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 20;
+      opacity:0;
+      transform: translateY(10px);
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .toTop.show{
+      opacity:1;
+      transform: translateY(0);
+      pointer-events:auto;
+    }
+
+    @media(max-width:420px){
+      .caps{ font-size: 14px; }
+      .unit{ min-width: 78px; }
+      .flip{ font-size: 30px; }
+      .btn{ font-size: 12px; padding: 14px 22px; }
+      .p{ font-size: 20px; }
+      .mini .v{ font-size: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="veil"></div>
+
+  <main class="wrap">
+
+    <section id="top">
+      <div class="card">
+        <div class="hero">
+          <img class="top-element" src="./element_6%20(1).png" alt="Нежный декоративный элемент">
+
+          <p class="caps">8 Марта · Лучшей подруге</p>
+          <div class="script hero-title">Анель</div>
+
+          <div class="hero-img">
+            <img src="./main_picture.png" alt="Анель Куанышева">
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="caps" style="margin-top:2px;">Анель Куанышева</p>
+          <p class="small">9 сентября</p>
+          <p class="small">Моей лучшей подруге — с теплом и любовью</p>
+
+          <div class="btns">
+            <a class="btn" href="#congrats">Открыть поздравление</a>
+            <button class="btn secondary" type="button" id="btnShare">Поделиться</button>
+            <button class="btn secondary" type="button" id="btnPrint">Печать / PDF</button>
+            <button class="btn secondary" type="button" id="btnDownloadAll">Скачать все изображения</button>
+          </div>
+
+          <p class="small" id="shareHint" style="display:none; margin-top:10px;">
+            Ссылка скопирована ✅
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="congrats">
+      <div class="card">
+        <div class="script h-script">Послание для лучшей подруги</div>
+
+        <div class="flow">
+          <p class="p">
+            Дорогая Анель,<br>
+            с 8 Марта тебя, моя прекрасная подруга.
+            В этот тёплый весенний день мне особенно хочется сказать,
+            как сильно я ценю тебя, твоё присутствие в моей жизни
+            и нашу по-настоящему дорогую сердцу дружбу.
+          </p>
+
+          <p class="p">
+            Оставайся всегда такой же жизнерадостной, весёлой, искренней и оптимистичной.
+            В тебе есть удивительная лёгкость, которая делает мир вокруг светлее,
+            а любой день — теплее и добрее.
+            Ты умеешь подарить улыбку,
+            поддержать именно тогда, когда это особенно нужно,
+            и просто своим присутствием сделать всё уютнее и спокойнее.
+          </p>
+
+          <p class="p">
+            Я очень сильно ценю нашу дружбу.
+            Ценю все разговоры, смех, поддержку, тёплые моменты
+            и то особенное чувство,
+            когда рядом есть человек, которому можно доверять,
+            с которым можно быть собой и который понимает без лишних слов.
+          </p>
+
+          <p class="p">
+            Ты не просто хорошая подруга.
+            Ты одна из тех редких людей,
+            которые действительно становятся важной частью жизни.
+            С тобой связаны искренние эмоции,
+            хорошие воспоминания и то внутреннее ощущение,
+            что рядом есть родная душа.
+          </p>
+
+          <p class="p">
+            Мне хочется пожелать тебе огромного счастья,
+            любви, вдохновения, красоты вокруг,
+            исполнения самых заветных желаний
+            и как можно больше людей,
+            которые будут любить, ценить и беречь тебя так,
+            как ты этого заслуживаешь.
+          </p>
+
+          <p class="p">
+            Пусть в твоей жизни всегда будет место радости,
+            ярким впечатлениям, приятным встречам,
+            новым мечтам и большим победам.
+            Пусть твоё сердце всегда остаётся таким же светлым,
+            а глаза сияют от счастья.
+          </p>
+
+          <p class="p">
+            Спасибо тебе за твою доброту,
+            за искренность, за твой характер,
+            за твой смех и за то,
+            что ты есть в моей жизни.
+            Я правда очень дорожу нашей дружбой.
+          </p>
+
+          <p class="p">
+            С 8 Марта, моя дорогая Анель 💐<br>
+            Оставайся самой прекрасной, лёгкой, яркой и любимой.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card">
+        <div class="script h-script">О тебе</div>
+
+        <p class="p">
+          Анель — это человек с яркой энергией, живым сердцем и особенным светом внутри.
+          В ней красиво сочетаются доброта, лёгкость, искренность и умение радоваться жизни.
+          Именно такие люди делают дружбу тёплой, настоящей и незабываемой.
+        </p>
+
+        <p class="p">
+          Она умеет быть рядом по-настоящему:
+          поддержать, развеселить, вдохновить,
+          услышать и сделать день лучше.
+          В ней чувствуется душевность,
+          открытость и то редкое человеческое тепло,
+          которое невозможно сыграть или придумать.
+        </p>
+
+        <div class="chips" aria-label="Профиль">
+          <div class="chip">Лучшая подруга</div>
+          <div class="chip">Жизнерадостность</div>
+          <div class="chip">Оптимизм</div>
+          <div class="chip">Искренность</div>
+          <div class="chip">Тепло души</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="card">
+        <div class="script h-script">Твоя красота и настроение</div>
+
+        <p class="p" style="margin-top:6px;">
+          Эта галерея — про твою нежность, яркость, харизму и красоту.
+          В каждом кадре чувствуется твоя энергия,
+          твоя лёгкость и тот самый свет,
+          за который тебя так любят и ценят.
+        </p>
+
+        <p class="small" style="margin-top:10px;">
+          Листай фотографии — каждая из них по-своему передаёт твоё настроение и очарование.
+        </p>
+
+        <div class="gallery" aria-label="Фотогалерея">
+          <div class="g-stage" id="gStage">
+            <img src="./1_photo.png" alt="Образ 1" class="active">
+            <img src="./2_photo.png" alt="Образ 2">
+            <img src="./3_photo.png" alt="Образ 3">
+            <img src="./4_photo.png" alt="Образ 4">
+            <img src="./5_photo.png" alt="Образ 5">
+          </div>
+          <div class="g-controls">
+            <button type="button" id="gPrev">Назад</button>
+            <div class="dots" id="gDots" aria-label="Индикаторы"></div>
+            <button type="button" id="gNext">Вперёд</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="astro">
+      <div class="card">
+        <div class="script h-script">Твой знак зодиака — Дева</div>
+
+        <div class="chips" style="margin-top:10px;">
+          <div class="chip">♍ Дева</div>
+          <div class="chip">Стихия: Земля</div>
+          <div class="chip">Планета: Меркурий</div>
+          <div class="chip">Дата рождения: 9 сентября</div>
+        </div>
+
+        <p class="p" style="margin-top:16px;">
+          Девы — это люди с тонкой душой, красивым внутренним миром и особенной глубиной.
+          В них часто сочетаются ум, сдержанная красота, аккуратность,
+          наблюдательность и очень искреннее отношение к тем,
+          кого они действительно любят и ценят.
+        </p>
+
+        <p class="p">
+          Женщина-Дева — это не просто внешняя привлекательность.
+          Это интеллигентность, чувство меры, тонкость характера,
+          умение замечать важное в деталях
+          и редкая способность быть опорой для близких.
+          В таких людях всегда есть внутреннее достоинство,
+          спокойная сила и настоящее благородство души.
+        </p>
+
+        <p class="p">
+          Девы умеют дружить искренне и глубоко.
+          Они не разбрасываются чувствами,
+          но если уж впускают человека в сердце,
+          то делают это по-настоящему.
+          Их дружба — это надёжность, забота, честность
+          и то самое тёплое присутствие,
+          которое очень чувствуется в жизни.
+        </p>
+
+        <p class="p">
+          В тебе красиво раскрываются лучшие качества этого знака:
+          умение чувствовать людей,
+          доброта, жизнелюбие, аккуратность,
+          искренность, внимательность и внутренняя собранность.
+          При этом в тебе есть то, что делает тебя особенно обаятельной —
+          лёгкость, весёлый характер и живой оптимизм.
+        </p>
+
+        <p class="p">
+          Дева — это знак людей,
+          которые умеют делать мир вокруг лучше:
+          словами, поступками, отношением и своей энергией.
+          И именно поэтому рядом с такими людьми так спокойно,
+          приятно и по-настоящему тепло.
+        </p>
+
+        <p class="p">
+          Ты именно такая:
+          красивая не только внешне, но и сердцем,
+          мудрая, светлая, добрая и очень настоящая.
+          И пусть все лучшие качества твоего знака
+          всегда помогают тебе идти по жизни легко,
+          уверенно и счастливо.
+        </p>
+      </div>
+    </section>
+
+    <section id="strengths">
+      <div class="card">
+        <div class="script h-script">Твои сильные качества</div>
+
+        <img class="feature-img" src="./element_6%20(1).png" alt="Декоративный элемент">
+
+        <div class="grid">
+          <div class="mini">
+            <div class="t">Жизнерадостность</div>
+            <div class="v">
+              Ты умеешь приносить свет и хорошее настроение.
+              С тобой рядом легче дышится, теплее на душе и проще верить в хорошее.
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="t">Оптимизм</div>
+            <div class="v">
+              Даже в обычных вещах ты умеешь находить что-то доброе и красивое.
+              Это редкое качество, которое очень украшает человека и вдохновляет окружающих.
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="t">Искренность</div>
+            <div class="v">
+              В тебе чувствуется честность, открытость и настоящее тепло.
+              Именно поэтому рядом с тобой спокойно и легко быть собой.
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="t">Дружелюбие</div>
+            <div class="v">
+              Ты умеешь выстраивать настоящие отношения,
+              в которых есть доверие, поддержка, душевность и радость общения.
+            </div>
+          </div>
+
+          <div class="mini">
+            <div class="t">Красота души</div>
+            <div class="v">
+              Твоя красота — не только во внешности,
+              но и в том, как ты говоришь, чувствуешь, заботишься и даришь людям тепло.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compliments">
+      <div class="card">
+        <div class="script h-script">За что тебя особенно ценят</div>
+
+        <div class="tags">
+          <div class="tag">Доброта</div>
+          <div class="tag">Лёгкость</div>
+          <div class="tag">Оптимизм</div>
+          <div class="tag">Искренность</div>
+          <div class="tag">Красота</div>
+          <div class="tag">Верность дружбе</div>
+          <div class="tag">Тепло</div>
+          <div class="tag">Харизма</div>
+        </div>
+
+        <p class="p" style="margin-top:18px;">
+          Ты из тех людей, которых хочется беречь.
+          Потому что твоя дружба, твоё доброе сердце и твоя светлая энергия —
+          по-настоящему ценны.
+        </p>
+      </div>
+    </section>
+
+    <section id="final">
+      <div class="card">
+        <div class="script h-script">С любовью и нежностью</div>
+
+        <p class="p">
+          Пусть твоя жизнь будет наполнена счастьем, красивыми моментами,
+          искренними людьми, теплом, любовью и радостью.
+          Пусть у тебя всегда будет повод улыбаться,
+          мечтать, вдохновляться и чувствовать себя любимой.
+        </p>
+
+        <p class="p">
+          Оставайся всегда такой же прекрасной,
+          жизнерадостной, весёлой, оптимистичной и настоящей.
+          Я очень сильно ценю нашу дружбу
+          и от всей души желаю тебе только самого светлого.
+        </p>
+
+        <div class="script sign">С 8 Марта, моя дорогая Анель 💐</div>
+      </div>
+    </section>
+
+    <section id="bday">
+      <div class="card">
+        <div class="script h-script">До твоего дня рождения</div>
+
+        <div class="countdown">
+          <p class="count-title">Осталось:</p>
+          <div class="digits">
+            <div class="unit">
+              <div class="flip" id="bDays">00</div>
+              <div class="lab">дней</div>
+            </div>
+            <div class="unit">
+              <div class="flip" id="bHours">00</div>
+              <div class="lab">часов</div>
+            </div>
+            <div class="unit">
+              <div class="flip" id="bMins">00</div>
+              <div class="lab">минут</div>
+            </div>
+            <div class="unit">
+              <div class="flip" id="bSecs">00</div>
+              <div class="lab">секунд</div>
+            </div>
+          </div>
+
+          <div class="footer-sign" style="margin-top:14px;">
+            И пусть каждый день до него будет счастливым ✨
+          </div>
+        </div>
+
+        <a class="btn" href="#top" style="margin-top:18px;">Наверх</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toTop" id="toTop">
+    <a class="btn" href="#top">Наверх ↑</a>
+  </div>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    (function revealCards(){
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            en.target.classList.add('revealed');
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.14 });
+
+      cards.forEach(c=>io.observe(c));
+      if(cards[0]) cards[0].classList.add('revealed');
+    })();
+
+    (function toTop(){
+      const btn = document.getElementById('toTop');
+      window.addEventListener('scroll', ()=>{
+        if(window.scrollY > 520) btn.classList.add('show');
+        else btn.classList.remove('show');
+      }, {passive:true});
+    })();
+
+    (function gallery(){
+      const stage = document.getElementById('gStage');
+      if(!stage) return;
+
+      const imgs = Array.from(stage.querySelectorAll('img'));
+      const dotsWrap = document.getElementById('gDots');
+      const prev = document.getElementById('gPrev');
+      const next = document.getElementById('gNext');
+      let i = 0;
+
+      function buildDots(){
+        if(!dotsWrap) return;
+        dotsWrap.innerHTML = '';
+        imgs.forEach((_, idx)=>{
+          const d = document.createElement('div');
+          d.className = 'dot' + (idx === i ? ' on' : '');
+          d.addEventListener('click', ()=>{
+            i = idx;
+            render();
+          });
+          dotsWrap.appendChild(d);
+        });
+      }
+
+      function render(){
+        imgs.forEach((img, idx)=> img.classList.toggle('active', idx === i));
+        if(dotsWrap){
+          Array.from(dotsWrap.children).forEach((d, idx)=> d.classList.toggle('on', idx === i));
+        }
+      }
+
+      if(prev) prev.addEventListener('click', ()=>{
+        i = (i - 1 + imgs.length) % imgs.length;
+        render();
+      });
+
+      if(next) next.addEventListener('click', ()=>{
+        i = (i + 1) % imgs.length;
+        render();
+      });
+
+      let x0 = null;
+      stage.addEventListener('touchstart', e=>{
+        x0 = e.touches[0].clientX;
+      }, {passive:true});
+
+      stage.addEventListener('touchend', e=>{
+        if(x0 === null) return;
+        const x1 = e.changedTouches[0].clientX;
+        const dx = x1 - x0;
+        if(Math.abs(dx) > 35){
+          if(dx < 0 && next) next.click();
+          else if(dx > 0 && prev) prev.click();
+        }
+        x0 = null;
+      }, {passive:true});
+
+      buildDots();
+      render();
+    })();
+
+    const pad2 = n => String(n).padStart(2, '0');
+
+    function nextBirthday(monthIndex, day){
+      const now = new Date();
+      const y = now.getFullYear();
+      let t = new Date(y, monthIndex, day, 0, 0, 0, 0);
+      if(t <= now) t = new Date(y + 1, monthIndex, day, 0, 0, 0, 0);
+      return t;
+    }
+
+    function tickBirthday(){
+      const target = nextBirthday(8, 9); // Сентябрь = 8
+      const now = new Date();
+      let diff = target - now;
+      if(diff < 0) diff = 0;
+
+      const sec = Math.floor(diff / 1000);
+      const days = Math.floor(sec / 86400);
+      const hours = Math.floor((sec % 86400) / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = sec % 60;
+
+      const elDays = document.getElementById('bDays');
+      const elHours = document.getElementById('bHours');
+      const elMins = document.getElementById('bMins');
+      const elSecs = document.getElementById('bSecs');
+
+      if(!elDays || !elHours || !elMins || !elSecs) return;
+
+      elDays.textContent = pad2(days);
+      elHours.textContent = pad2(hours);
+      elMins.textContent = pad2(mins);
+      elSecs.textContent = pad2(secs);
+    }
+
+    tickBirthday();
+    setInterval(tickBirthday, 1000);
+
+    (function actions(){
+      const btnShare = document.getElementById('btnShare');
+      const btnPrint = document.getElementById('btnPrint');
+      const hint = document.getElementById('shareHint');
+
+      function toast(){
+        if(!hint) return;
+        hint.style.display = 'block';
+        clearTimeout(window.__t);
+        window.__t = setTimeout(()=>{
+          hint.style.display = 'none';
+        }, 1600);
+      }
+
+      async function copyLink(){
+        try{
+          await navigator.clipboard.writeText(location.href);
+          toast();
+        }catch(e){
+          const ta = document.createElement('textarea');
+          ta.value = location.href;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          toast();
+        }
+      }
+
+      if(btnShare){
+        btnShare.addEventListener('click', async ()=>{
+          const data = {
+            title: document.title,
+            text: 'Поздравление с 8 Марта для Анель',
+            url: location.href
+          };
+
+          if(navigator.share){
+            try{
+              await navigator.share(data);
+            }catch(e){}
+          }else{
+            await copyLink();
+          }
+        });
+      }
+
+      if(btnPrint){
+        btnPrint.addEventListener('click', ()=> window.print());
+      }
+    })();
+
+    (function downloadAll(){
+      const btn = document.getElementById('btnDownloadAll');
+      if(!btn) return;
+
+      const files = [
+        './main_picture.png',
+        './1_photo.png',
+        './2_photo.png',
+        './3_photo.png',
+        './4_photo.png',
+        './5_photo.png',
+        './element_6%20(1).png'
+      ];
+
+      function triggerDownload(url){
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = decodeURIComponent(url.split('/').pop());
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
+      btn.addEventListener('click', async ()=>{
+        for(let i = 0; i < files.length; i++){
+          triggerDownload(files[i]);
+          await new Promise(r => setTimeout(r, 220));
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
